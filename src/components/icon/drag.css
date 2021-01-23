@@ -1,0 +1,16 @@
+.drag-wrapper {
+    width: 120px;
+    height: 180px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+
+.iconText {
+    color: white;
+}
+
+.drag-wrapper img {
+    height: 50px;
+    width: 50px;
+}
