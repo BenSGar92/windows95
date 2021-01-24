@@ -1,67 +1,61 @@
-import { render } from 'react-dom';
-import React, {Component} from 'react'
+import React, { useRef, useEffect, useState } from 'react';
+import './paint.css'
 
-class Paint extends React.Component {
-    constructor(props) {
-        super(props);
+function Paint() {
+
+  const canvasRef = useRef(null)
+  const contextRef = useRef(null)
+  const divRef = useRef(null)
+  const [isDrawing, setIsDrawing] = useState(false)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    canvas.width = window.innerWidth * 2;
+    canvas.height = window.innerHeight * 2;
+    canvas.style.width = `${1000}px`;
+    canvas.style.height = `${750}px`;
+
+    const context = canvas.getContext("2d")
+    context.scale(2.58, 2.58);
+    context.lineCap = "round"
+    //this line will provide the color - maybe change that to let users type in a color or click a color
+    context.strokeStyle = "black"
+    //here the line thickness is defined
+    context.lineWidth = 5
+    contextRef.current = context
+  }, [])
+
+  const startDrawing = ({nativeEvent}) => {
+    const {offsetX, offsetY} = nativeEvent
+    contextRef.current.beginPath()
+    contextRef.current.moveTo(offsetX, offsetY)
+    setIsDrawing(true)
+  }
+
+  const finishDrawing = () => {
+    contextRef.current.closePath()
+    setIsDrawing(false)
+  }
+
+  const draw = ({nativeEvent}) => {
+    if(!isDrawing){
+      return
     }
+    const {offsetX, offsetY} = nativeEvent;
+    contextRef.current.lineTo(offsetX, offsetY)
+    contextRef.current.stroke()
+  }
 
-    componentDidUpdate() {
-        var canvas = document.getElementById("draw");
-
-        var ctx = canvas.getContext("2d");
-        resize();
-
-        // resize canvas when window is resized
-        function resize() {
-        ctx.canvas.width = window.innerWidth;
-        ctx.canvas.height = window.innerHeight;
-        }
-
-        // initialize position as 0,0
-        var pos = { x: 0, y: 0 };
-
-        // new position from mouse events
-        function setPosition(e) {
-        pos.x = e.clientX;
-        pos.y = e.clientY;
-        }
-
-        function draw(e) {
-        if (e.buttons !== 1) return; // if mouse is not clicked, do not go further
-
-        var color = document.getElementById("hex").value;
-
-        ctx.beginPath(); // begin the drawing path
-
-        ctx.lineWidth = 20; // width of line
-        ctx.lineCap = "round"; // rounded end cap
-        ctx.strokeStyle = color; // hex color of line
-
-        ctx.moveTo(pos.x, pos.y); // from position
-        setPosition(e);
-        ctx.lineTo(pos.x, pos.y); // to position
-
-        ctx.stroke(); // draw it!
-        }
-
-
-        // add window event listener to trigger when window is resized
-        window.addEventListener("resize", resize);
-
-        // add event listeners to trigger on different mouse events
-        document.addEventListener("mousemove", draw);
-        document.addEventListener("mousedown", setPosition);
-        document.addEventListener("mouseenter", setPosition);
-    }
-
-render() {
   return (
-    <div className="App">
-      <input id="hex" placeholder="enter hex color"></input>
-      <canvas id="draw"></canvas>
+    <div id="canvasDiv" ref={divRef}>
+      <canvas
+        onMouseDown={startDrawing}
+        onMouseUp={finishDrawing}
+        onMouseMove={draw}
+        ref={canvasRef}
+      />
     </div>
-  );
+  )
 }
-}
-export default Paint;
+
+export default Paint

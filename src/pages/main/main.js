@@ -59,12 +59,17 @@ function Main() {
                     <DragIcon6 />
                 </div>
                 { showPaint ? 
-                    <div className="container">
-                        <div className="paintContainer">
-                            <Paint />
+                        <div className="container">
+                            <div className="row paintHeader">
+                                <div className="paintIcon"><img src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57e000d1b08345807bdc15b6_pbrush_1.ico_32x32.png"/><span>Paint</span></div>
+                                <div onClick={openPaint} className="closePaint">&#10006;</div>
+                            </div>
+                            <div className="row">
+                                <div className="paintContainer">
+                                    <Paint />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    
                 : null}
                 { showStart ? 
                     <div className="startBox">
