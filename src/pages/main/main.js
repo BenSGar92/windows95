@@ -6,6 +6,7 @@ import DragIcon3 from '../../components/icon/drag3'
 import DragIcon4 from '../../components/icon/drag4'
 import DragIcon5 from '../../components/icon/drag5'
 import DragIcon6 from '../../components/icon/drag6'
+import Paint from '../../components/paint/paint'
 import './main.css'
 
 function Main() {
@@ -13,6 +14,7 @@ function Main() {
     const [showStart, setShowStart] = useState(false)
     const [showProgram, setShowProgram] = useState(false)
     const [showAccessories, setShowAccessories] = useState(false)
+    const [showPaint, setShowPaint] = useState(false)
 
     const openStart = () => {
         setShowStart(true)
@@ -38,6 +40,14 @@ function Main() {
         }
     }
 
+    const openPaint = () => {
+        if (showPaint == false) {
+            setShowPaint(true)
+        } if (showPaint == true) {
+            setShowPaint(false)
+        }
+    }
+
         return (
             <div>
                 <div className="background">
@@ -48,6 +58,14 @@ function Main() {
                     <DragIcon5 />
                     <DragIcon6 />
                 </div>
+                { showPaint ? 
+                    <div className="container">
+                        <div className="paintContainer">
+                            <Paint />
+                        </div>
+                    </div>
+                    
+                : null}
                 { showStart ? 
                     <div className="startBox">
                         <div className="row windows95Row">
@@ -131,7 +149,7 @@ function Main() {
                                     <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57e000d13c801e0704634aa4_Online%20Reg%2032x32.png"/><span>Online Registration</span></div>
                                 </div>
                                 <div className="col-sm p-0">
-                                    <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57e000d1b08345807bdc15b6_pbrush_1.ico_32x32.png"/><span>Paint</span></div>
+                                    <div className="accessoriesButton" onClick={openPaint}><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57e000d1b08345807bdc15b6_pbrush_1.ico_32x32.png"/><span>Paint</span></div>
                                 </div>
                                 <div className="col-sm p-0">
                                     <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57e000d1b08345807bdc15b5_Wordpad%2032x32.png"/><span>Notepad</span></div>

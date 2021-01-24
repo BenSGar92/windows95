@@ -178,3 +178,10 @@ html {
     /* padding-right: 5px; */
     width: 24px;
 }
+
+.paintContainer {
+    width: 500px;
+    height: 500px;
+    z-index: 1;
+    background-color: white;
+}
