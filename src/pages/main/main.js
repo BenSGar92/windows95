@@ -12,6 +12,7 @@ function Main() {
 
     const [showStart, setShowStart] = useState(false)
     const [showProgram, setShowProgram] = useState(false)
+    const [showAccessories, setShowAccessories] = useState(false)
 
     const openStart = () => {
         setShowStart(true)
@@ -22,11 +23,18 @@ function Main() {
     }
 
     const showProgramFunction = () => {
-        console.log("Program")
         if (showProgram == false) {
             setShowProgram(true)
         } if (showProgram == true) {
             setShowProgram(false)
+        }
+    }
+
+    const showAccessoriesFunction = () => {
+        if (showAccessories == false) {
+            setShowAccessories(true)
+        } if (showAccessories == true) {
+            setShowAccessories(false)
         }
     }
 
@@ -73,10 +81,10 @@ function Main() {
                         { showProgram ? 
                         <div className="programBox">
                             <div className="col-sm p-0">
-                                <div className="programButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b1c44254eef5b558d0147b_Programs32x32.png"/><span>Accessories</span><img className="arrowRight" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b124d371bead8852ab0e91_Menu%20Arrow.png"/></div>
+                                <div className="programButton" onClick={showAccessoriesFunction}><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b1c44254eef5b558d0147b_Programs32x32.png"/><span>Accessories</span><img className="arrowRight2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b124d371bead8852ab0e91_Menu%20Arrow.png"/></div>
                             </div>
                             <div className="col-sm p-0">
-                                <div className="programButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b1c44254eef5b558d0147b_Programs32x32.png"/><span>Start Up</span><img className="arrowRight" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b124d371bead8852ab0e91_Menu%20Arrow.png"/></div>
+                                <div className="programButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b1c44254eef5b558d0147b_Programs32x32.png"/><span>Start Up</span><img className="arrowRight3" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b124d371bead8852ab0e91_Menu%20Arrow.png"/></div>
                             </div>
                             <div className="col-sm p-0">
                                 <div className="programButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57dffc3c437ad7d20b3dde20_Interenet%20Explorer%2032x32.png"/><span>Internet Explorer</span></div>
@@ -93,6 +101,43 @@ function Main() {
                             <div className="col-sm p-0">
                                 <div className="programButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57dffc3c3c801e0704631526_File%20Explorer%2032x32.png"/><span>Windows Explorer</span></div>
                             </div>
+                            { showAccessories ?
+                            <div className="accessoriesBox">
+                                <div className="col-sm p-0">
+                                    <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b1c44254eef5b558d0147b_Programs32x32.png"/><span>Games</span></div>
+                                </div>
+                                <div className="col-sm p-0">
+                                    <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b1c44254eef5b558d0147b_Programs32x32.png"/><span>Internet Tools</span></div>
+                                </div>
+                                <div className="col-sm p-0">
+                                    <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b1c44254eef5b558d0147b_Programs32x32.png"/><span>Multimedia</span></div>
+                                </div>
+                                <div className="col-sm p-0">
+                                    <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b1c44254eef5b558d0147b_Programs32x32.png"/><span>System Tools</span></div>
+                                </div>
+                                <div className="col-sm p-0">
+                                    <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57e000ee813bf6950b088acc_Calculator%2032x32.png"/><span>Calculator</span></div>
+                                </div>
+                                <div className="col-sm p-0">
+                                    <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b0bd8e54eef5b558ce88a9_Folder%20Icon%2032x32.png"/><span>Character Map</span></div>
+                                </div>
+                                <div className="col-sm p-0">
+                                    <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b0bd8e54eef5b558ce88a9_Folder%20Icon%2032x32.png"/><span>Imaging</span></div>
+                                </div>
+                                <div className="col-sm p-0">
+                                    <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b1c5c82a4ca7f058f9569c_Notepad%2032x32.png"/><span>Word Pad</span></div>
+                                </div>
+                                <div className="col-sm p-0">
+                                    <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57e000d13c801e0704634aa4_Online%20Reg%2032x32.png"/><span>Online Registration</span></div>
+                                </div>
+                                <div className="col-sm p-0">
+                                    <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57e000d1b08345807bdc15b6_pbrush_1.ico_32x32.png"/><span>Paint</span></div>
+                                </div>
+                                <div className="col-sm p-0">
+                                    <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57e000d1b08345807bdc15b5_Wordpad%2032x32.png"/><span>Notepad</span></div>
+                                </div>
+                            </div>
+                            : null}
                         </div>
                         : null}
                     </div>
