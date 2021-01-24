@@ -18,6 +18,21 @@ html {
     background-color: #c3c3c3;
 }
 
+.programBox {
+    margin-top: -1px;
+    margin-left : 300px;
+    width: 200px;
+    height: 199px;
+    background-color: red;
+    color: green;
+    position: relative;
+    /* bottom: 0; */
+    border-style: solid;
+    border-width: 2px 0px 0px 1px;
+    border-color: #dfdfdf transparent transparent #dfdfdf;
+    background-color: #c3c3c3;
+}
+
 .row {
     height: 100%;
 }
@@ -62,6 +77,20 @@ html {
     text-align: left;
 }
 
+.programButton {
+    cursor: pointer;
+    padding-top: 3px;
+    width: 100%;
+    height: 100%;
+    background-color: #c3c3c3;
+    color: black;
+    text-align: left;
+}
+
+.programButton span {
+    padding-left: 10px;
+}
+
 .divShutdown {
     border-top: 2px solid #808080;
 }
@@ -69,6 +98,11 @@ html {
 .divButton:hover {
     background-color: #000099;
     color: white;    
+}
+
+.programButton:hover {
+    background-color: #000099;
+    color: white;
 }
 
 .arrowRight {
@@ -87,4 +121,15 @@ html {
 .span95 {
     cursor: default;
     color: white;
+}
+
+.imgIcon1 {
+    padding-left: 2px;
+    padding-right: 15px;
+}
+
+.imgIcon2 {
+    padding-left: 2px;
+    /* padding-right: 5px; */
+    width: 24px;
 }
