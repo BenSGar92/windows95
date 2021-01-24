@@ -22,26 +22,69 @@ html {
     height: 100%;
 }
 
+.windows95Row {
+    position: absolute;
+    width: 100%;
+}
+
 .vertical {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     height: 100%;
-    width: auto;
+    width: 100%;
     font-size: 50px;
     text-align: justify;
-    padding: 30px 0!important;
+    /* padding: 30px 0!important; */
+    padding-top: 30px!important;
+    padding-bottom: 30px!important;
+    padding-left: 0px!important;
+    padding-right: 5px!important;
+    border-style: solid;
+    border-width: 1px 0px 0px 1px;
+    border-color: black transparent transparent #dfdfdf;
+    background-color: #808080;
 }
 
-.startMenuButtons div {
+.startDiv {
+    align-items: right;
     height: 14.285%;
-    padding: 0 0!important;
-}
-
-.startMenuButtons div button {
     width: 100%;
-    height: 100%;
+    padding: 0 0 0 0!important;
 }
 
-.startMenuButtons div button:hover {
+.divButton {
+    cursor: pointer;
+    padding-top: 5%;
+    width: 106%;
+    height: 100%;
+    background-color: #c3c3c3;
+    color: black;
+    text-align: left;
+}
+
+.divShutdown {
+    border-top: 2px solid #808080;
+}
+
+.divButton:hover {
     background-color: #000099;
+    color: white;    
+}
+
+.arrowRight {
+    margin-top: 4px;
+    padding-top: 5px;
+    padding-right: 5px;
+    height: 20px;
+    float: right;
+}
+
+.spanWindows {
+    cursor: default;
+    color: #c3c3c3;
+}
+
+.span95 {
+    cursor: default;
+    color: white;
 }
