@@ -16,7 +16,7 @@ function Paint() {
     canvas.style.height = `${750}px`;
 
     const context = canvas.getContext("2d")
-    context.scale(2.58, 2.58);
+    context.scale(3.85, 2.58);
     context.lineCap = "round"
     //this line will provide the color - maybe change that to let users type in a color or click a color
     context.strokeStyle = "black"
