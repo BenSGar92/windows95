@@ -10,8 +10,8 @@ function Paint() {
 
   useEffect(() => {
     const canvas = canvasRef.current
-    canvas.width = window.innerWidth * 2;
-    canvas.height = window.innerHeight * 2;
+    canvas.width = 3850;
+    canvas.height = 1950;
     canvas.style.width = `${1000}px`;
     canvas.style.height = `${750}px`;
 
