@@ -3,7 +3,7 @@ import React from 'react';
 
 import Draggable from 'react-draggable';
 
-class DragIcon6 extends React.Component {
+class Explorer extends React.Component {
 
   render() {
     return (
@@ -17,4 +17,4 @@ class DragIcon6 extends React.Component {
   }
 }
 
-export default DragIcon6;
+export default Explorer;

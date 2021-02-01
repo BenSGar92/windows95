@@ -5,8 +5,10 @@ import DragIcon2 from '../../components/icon/drag2'
 import DragIcon3 from '../../components/icon/drag3'
 import DragIcon4 from '../../components/icon/drag4'
 import DragIcon5 from '../../components/icon/drag5'
-import DragIcon6 from '../../components/icon/drag6'
+import Explorer from '../../components/icon/explorer'
 import Paint from '../../components/paint/paint'
+// import Browser from '../../components/browser/browser'
+import Calc from '../../components/calculator/calculator'
 import './main.css'
 import { Dropdown } from 'react-bootstrap';
 
@@ -16,6 +18,8 @@ function Main() {
     const [showProgram, setShowProgram] = useState(false)
     const [showAccessories, setShowAccessories] = useState(false)
     const [showPaint, setShowPaint] = useState(false)
+    // const [showBrowser, setShowBrowser] = useState(false)
+    const [showCalc, setShowCalc] = useState(false)
     const [color, setColor] = useState(false)
 
     const openStart = () => {
@@ -44,6 +48,10 @@ function Main() {
         }
     }
 
+    const closePaint = () => {
+        setShowPaint(false)
+    }
+
     const openPaint = () => {
         if (showPaint == false) {
             setShowPaint(true)
@@ -51,6 +59,16 @@ function Main() {
             setShowPaint(false)
         }
         openStart()
+    }
+
+    const calcFunction = () => {
+        setShowCalc(true)
+        openStart()
+    }
+
+    const openBrowser = () => {
+        // setShowBrowser(true)
+        console.log("Eventually this will be a working browser...hopefully")
     }
 
         return (
@@ -61,13 +79,25 @@ function Main() {
                     <DragIcon3 />
                     <DragIcon4 />
                     <DragIcon5 />
-                    <DragIcon6 />
+                    <div onDoubleClick={openBrowser}>
+                        <Explorer />
+                    </div>
                 </div>
+                {/* { showBrowser ?
+                    <div>
+                        <Browser />
+                    </div>
+                : null} */}
+                { showCalc ?
+                    <div>
+                        <Calc />
+                    </div>
+                : null}
                 { showPaint ? 
                         <div className="container">
                             <div className="row paintHeader">
                                 <div className="paintIcon"><img src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57e000d1b08345807bdc15b6_pbrush_1.ico_32x32.png"/><span>Paint</span></div>
-                                <div onClick={openPaint} className="closePaint">&#10006;</div>
+                                <div onClick={closePaint} className="closePaint">&#10006;</div>
                             </div>
                             <div className="row">
                                 
@@ -164,7 +194,7 @@ function Main() {
                                     <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b1c44254eef5b558d0147b_Programs32x32.png"/><span>System Tools</span></div>
                                 </div>
                                 <div className="col-sm p-0">
-                                    <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57e000ee813bf6950b088acc_Calculator%2032x32.png"/><span>Calculator</span></div>
+                                    <div className="accessoriesButton" onClick={calcFunction}><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57e000ee813bf6950b088acc_Calculator%2032x32.png"/><span>Calculator</span></div>
                                 </div>
                                 <div className="col-sm p-0">
                                     <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b0bd8e54eef5b558ce88a9_Folder%20Icon%2032x32.png"/><span>Character Map</span></div>
