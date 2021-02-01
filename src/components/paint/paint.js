@@ -1,12 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
 import './paint.css'
 
-function Paint() {
+function Paint(props) {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
-  const divRef = useRef(null)
   const [isDrawing, setIsDrawing] = useState(false)
+  const [color, setColor] = useState("black")
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -19,7 +19,7 @@ function Paint() {
     context.scale(3.85, 2.58);
     context.lineCap = "round"
     //this line will provide the color - maybe change that to let users type in a color or click a color
-    context.strokeStyle = "black"
+    context.strokeStyle = {color}
     //here the line thickness is defined
     context.lineWidth = 5
     contextRef.current = context
@@ -30,6 +30,7 @@ function Paint() {
     contextRef.current.beginPath()
     contextRef.current.moveTo(offsetX, offsetY)
     setIsDrawing(true)
+    props.setNewColor()
   }
 
   const finishDrawing = () => {
@@ -47,7 +48,7 @@ function Paint() {
   }
 
   return (
-    <div id="canvasDiv" ref={divRef}>
+    <div id="canvasDiv">
       <canvas
         onMouseDown={startDrawing}
         onMouseUp={finishDrawing}

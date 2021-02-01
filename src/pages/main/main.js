@@ -8,6 +8,7 @@ import DragIcon5 from '../../components/icon/drag5'
 import DragIcon6 from '../../components/icon/drag6'
 import Paint from '../../components/paint/paint'
 import './main.css'
+import { Dropdown } from 'react-bootstrap';
 
 function Main() {
 
@@ -15,13 +16,16 @@ function Main() {
     const [showProgram, setShowProgram] = useState(false)
     const [showAccessories, setShowAccessories] = useState(false)
     const [showPaint, setShowPaint] = useState(false)
+    const [color, setColor] = useState(false)
 
     const openStart = () => {
-        setShowStart(true)
-    }
-
-    const closeStart = () => {
-        setShowStart(false)
+        if (showStart == false) {
+            setShowStart(true)
+        } if (showStart == true) {
+            setShowStart(false)
+        }
+        setShowProgram(false)
+        setShowAccessories(false)
     }
 
     const showProgramFunction = () => {
@@ -46,6 +50,7 @@ function Main() {
         } if (showPaint == true) {
             setShowPaint(false)
         }
+        openStart()
     }
 
         return (
@@ -65,7 +70,27 @@ function Main() {
                                 <div onClick={openPaint} className="closePaint">&#10006;</div>
                             </div>
                             <div className="row">
+                                
                                 <div className="paintContainer">
+                                    <div className="dropdownDiv">
+                                    <Dropdown>
+                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                                        Color
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu className="dropdownMenu">
+                                        <Dropdown.Item href="#/action-1">Red</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-2">Orange</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-3">Yellow</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-3">Green</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-3">Blue</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-3">Purple</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-3">Black</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-3">Brown</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-3">Erase</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                    </Dropdown>
+                                    </div>
                                     <Paint />
                                 </div>
                             </div>
@@ -166,7 +191,7 @@ function Main() {
                     </div>
                 : null}
                 
-                <Footer start={openStart} closeStart={closeStart}/>
+                <Footer start={openStart}/>
             </div>
         )
 }
