@@ -20,15 +20,11 @@ export default class Calc extends Component {
       }
     render() {
         return (
-            <Draggable>
-                {/* <div className="calcHeader"> */}
                     <div className="calc">
                         <Calculator
                         onNewInput={this.handleInput}
                         onResultChange={this.onResultChange}/>
                     </div>
-                {/* </div> */}
-            </Draggable>
         )
     }
 }

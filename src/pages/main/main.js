@@ -11,6 +11,7 @@ import Paint from '../../components/paint/paint'
 import Calc from '../../components/calculator/calculator'
 import './main.css'
 import { Dropdown } from 'react-bootstrap';
+import Draggable from 'react-draggable';
 
 function Main() {
 
@@ -52,6 +53,10 @@ function Main() {
         setShowPaint(false)
     }
 
+    const closeCalc = () => {
+        setShowCalc(false)
+    }
+
     const openPaint = () => {
         if (showPaint == false) {
             setShowPaint(true)
@@ -89,9 +94,19 @@ function Main() {
                     </div>
                 : null} */}
                 { showCalc ?
-                    <div>
-                        <Calc />
+                    <Draggable>
+                    <div className="container">
+                        <div className="row calcHeader">
+                            <div className="paintIcon"><img src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57e000ee813bf6950b088acc_Calculator%2032x32.png"/><span>Calculator</span></div>
+                            <div onClick={closeCalc} className="closeCalc">&#10006;</div>
+                        </div>
+                        <div className="row">
+                            <div className="calcContainer">
+                                <Calc />
+                            </div>
+                        </div>
                     </div>
+                    </Draggable>
                 : null}
                 { showPaint ? 
                         <div className="container">
