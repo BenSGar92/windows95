@@ -10,7 +10,7 @@ import Paint from '../../components/paint/paint'
 // import Browser from '../../components/browser/browser'
 import Calc from '../../components/calculator/calculator'
 import './main.css'
-import { Dropdown } from 'react-bootstrap';
+// import { Dropdown } from 'react-bootstrap';
 import Draggable from 'react-draggable';
 
 function Main() {
@@ -118,7 +118,7 @@ function Main() {
                                 
                                 <div className="paintContainer">
                                     <div className="dropdownDiv">
-                                    <Dropdown>
+                                    {/* <Dropdown>
                                     <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                                         Color
                                     </Dropdown.Toggle>
@@ -134,7 +134,7 @@ function Main() {
                                         <Dropdown.Item href="#/action-3">Brown</Dropdown.Item>
                                         <Dropdown.Item href="#/action-3">Erase</Dropdown.Item>
                                     </Dropdown.Menu>
-                                    </Dropdown>
+                                    </Dropdown> */}
                                     </div>
                                     <Paint />
                                 </div>

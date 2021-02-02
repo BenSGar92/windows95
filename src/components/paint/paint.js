@@ -1,12 +1,19 @@
 import React, { useRef, useEffect, useState } from 'react';
 import './paint.css'
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown'
 
-function Paint(props) {
+function Paint() {
 
   const canvasRef = useRef(null)
   const contextRef = useRef(null)
   const [isDrawing, setIsDrawing] = useState(false)
   const [color, setColor] = useState("black")
+
+  // const handleSelect=(e)=>{
+  //   console.log(e);
+  //   setColor(e)
+  // }
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -30,7 +37,6 @@ function Paint(props) {
     contextRef.current.beginPath()
     contextRef.current.moveTo(offsetX, offsetY)
     setIsDrawing(true)
-    props.setNewColor()
   }
 
   const finishDrawing = () => {
@@ -48,13 +54,30 @@ function Paint(props) {
   }
 
   return (
-    <div id="canvasDiv">
-      <canvas
-        onMouseDown={startDrawing}
-        onMouseUp={finishDrawing}
-        onMouseMove={draw}
-        ref={canvasRef}
-      />
+    <div>
+      <div className="dropdownDiv">
+      <Dropdown>
+      <DropdownButton className="dropdownMenu">
+          <Dropdown.Item eventKey="red">Red</Dropdown.Item>
+          <Dropdown.Item>Orange</Dropdown.Item>
+          <Dropdown.Item>Yellow</Dropdown.Item>
+          <Dropdown.Item>Green</Dropdown.Item>
+          <Dropdown.Item>Blue</Dropdown.Item>
+          <Dropdown.Item>Purple</Dropdown.Item>
+          <Dropdown.Item>Black</Dropdown.Item>
+          <Dropdown.Item>Brown</Dropdown.Item>
+          <Dropdown.Item>Erase</Dropdown.Item>
+      </DropdownButton>
+      </Dropdown>
+      </div>
+      <div id="canvasDiv">
+        <canvas
+          onMouseDown={startDrawing}
+          onMouseUp={finishDrawing}
+          onMouseMove={draw}
+          ref={canvasRef}
+        />
+      </div>
     </div>
   )
 }
