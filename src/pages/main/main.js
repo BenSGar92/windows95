@@ -5,6 +5,7 @@ import DragIcon2 from '../../components/icon/drag2'
 import DragIcon3 from '../../components/icon/drag3'
 import DragIcon4 from '../../components/icon/drag4'
 import DragIcon5 from '../../components/icon/drag5'
+import MediaPlayerIcon from '../../components/icon/mediaplayer'
 import Explorer from '../../components/icon/explorer'
 import Paint from '../../components/paint/paint'
 // import Browser from '../../components/browser/browser'
@@ -12,16 +13,39 @@ import Calc from '../../components/calculator/calculator'
 import './main.css'
 // import { Dropdown } from 'react-bootstrap';
 import Draggable from 'react-draggable';
+// import { MediaPlayer } from 'win95-media-player';
+import Minesweeper from 'minesweeper'
+
 
 function Main() {
+    
+    var minesweeper = require('minesweeper')
+    var mineArray = minesweeper.generateMineArray({
+        rows: 10,
+        cols: 10,
+        mines: 15
+    });
+    var board = new minesweeper.Board(mineArray);
+    var grid = board.grid();
+
 
     const [showStart, setShowStart] = useState(false)
     const [showProgram, setShowProgram] = useState(false)
     const [showAccessories, setShowAccessories] = useState(false)
+    const [showGames, setShowGames] = useState(false)
     const [showPaint, setShowPaint] = useState(false)
+    const [showMinesweeper, setShowMinesweeper] = useState(false)
     // const [showBrowser, setShowBrowser] = useState(false)
+    // const [showMediaPlayer, setShowMediaPlayer] = useState(false)
     const [showCalc, setShowCalc] = useState(false)
     const [color, setColor] = useState(false)
+
+    // const playlist = [
+    //     {
+    //       url: 'https://archive.org/download/CC1301_windows_95/CC1301_windows_95_512kb.mp4',
+    //       title: 'Computer Chronicles - Windows 95'
+    //     }
+    //   ];
 
     const openStart = () => {
         if (showStart == false) {
@@ -31,6 +55,7 @@ function Main() {
         }
         setShowProgram(false)
         setShowAccessories(false)
+        setShowGames(false)
     }
 
     const showProgramFunction = () => {
@@ -46,6 +71,14 @@ function Main() {
             setShowAccessories(true)
         } if (showAccessories == true) {
             setShowAccessories(false)
+        }
+    }
+
+    const showGamesFunction = () => {
+        if (showGames == false) {
+            setShowGames(true)
+        } if (showGames == true) {
+            setShowGames(false)
         }
     }
 
@@ -66,6 +99,15 @@ function Main() {
         openStart()
     }
 
+    const openMinesweeper = () => {
+        if (showMinesweeper == false) {
+            setShowMinesweeper(true)
+        } if (showMinesweeper == true) {
+            setShowMinesweeper(false)
+        }
+        openStart()
+    }
+
     const calcFunction = () => {
         setShowCalc(true)
         openStart()
@@ -76,6 +118,18 @@ function Main() {
         console.log("Eventually this will be a working browser...hopefully")
     }
 
+    const openMediaPlayer = () => {
+        console.log("Does this media player function work?")
+        // if (showMediaPlayer == false) {
+        //     setShowMediaPlayer(true)
+        // } if (showMediaPlayer == true) {
+        //     setShowMediaPlayer(false)
+        // }
+    }
+
+    //using minesweeper npm package
+    var board = new minesweeper.Board(mineArray);
+    var grid = board.grid();
         return (
             <div>
                 <div className="background">
@@ -84,6 +138,9 @@ function Main() {
                     <DragIcon3 />
                     <DragIcon4 />
                     <DragIcon5 />
+                    <div onDoubleClick={openMediaPlayer}>
+                        <MediaPlayerIcon />
+                    </div>
                     <div onDoubleClick={openBrowser}>
                         <Explorer />
                     </div>
@@ -91,6 +148,16 @@ function Main() {
                 {/* { showBrowser ?
                     <div>
                         <Browser />
+                    </div>
+                : null} */}
+                {/* { showMediaPlayer ?
+                    <div>
+                        <MediaPlayer
+                            className="player"
+                            playlist={playlist}
+                            showVideo
+                            fullscreenEnabled
+                        />
                     </div>
                 : null} */}
                 { showCalc ?
@@ -141,6 +208,7 @@ function Main() {
                             </div>
                         </div>
                 : null}
+                { showMinesweeper ? <div><Minesweeper /></div> : null }
                 { showStart ? 
                     <div className="startBox">
                         <div className="row windows95Row">
@@ -197,7 +265,7 @@ function Main() {
                             { showAccessories ?
                             <div className="accessoriesBox">
                                 <div className="col-sm p-0">
-                                    <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b1c44254eef5b558d0147b_Programs32x32.png"/><span>Games</span></div>
+                                    <div className="accessoriesButton" onClick={showGamesFunction}><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b1c44254eef5b558d0147b_Programs32x32.png"/><span>Games</span><img className="arrowRight4" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b124d371bead8852ab0e91_Menu%20Arrow.png"/></div>
                                 </div>
                                 <div className="col-sm p-0">
                                     <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57b1c44254eef5b558d0147b_Programs32x32.png"/><span>Internet Tools</span></div>
@@ -229,6 +297,13 @@ function Main() {
                                 <div className="col-sm p-0">
                                     <div className="accessoriesButton"><img className="imgIcon2" src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57e000d1b08345807bdc15b5_Wordpad%2032x32.png"/><span>Notepad</span></div>
                                 </div>
+                                { showGames ? 
+                                    <div className="gamesBox">
+                                        <div className="col-sm p-0">
+                                            <div className="gamesButton" onClick={openMinesweeper}><img className="imgIcon3" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAD1BMVEUAAAAAAACGio7Dx8v///8tKIExAAAAAXRSTlMAQObYZgAAAPFJREFUSEvV1MuNhTAQRNFOoVKoFCqFyj+mWfhD48ej7ZnVmAUS98jGRiLiNkTG66iALOLfAqnfLKoJ3GAFZKtlSxQQAee1KiDJVuuWKAImr0VKQEq2e5coEsQB6CJ3IvcaBFtX7yJ46xtg6SR4BKh717LLDTA2SKYljsDoNjF7PupXQNJuE1si0DqBbipA22NzDSB1YAPk0+nfeXSSGwDzdDSnvRbABog2VRtPvQYRU4x3u9U90M9mXEuvwSp+B157DbpYxgn4jIuoAPKXfhI1eOo8AQEAkWsEkP8gJej//ivPR9sgSX4p24B/BYGif4IfeRuXi0P8C3oAAAAASUVORK5CYII="/><span>Minesweeper</span></div>
+                                        </div>
+                                    </div>
+                                    : null}
                             </div>
                             : null}
                         </div>
