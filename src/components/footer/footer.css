@@ -12,14 +12,21 @@ footer {
     background: #c3c3c3;
 }
 
-.clock {
+.clockBorder {
     float: right;
-    margin-top: 2px;
-    margin-right: 8px;
-    color: #808080;
     border-style: solid;
     border-width: 1px;
     border-color: #808080;
+    margin-right: 5px;
+    height: 37px;
+    width: 94px;
+}
+
+.clock {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #808080;
+    margin-left: 5px;
 }
 
 .clock h1 {
