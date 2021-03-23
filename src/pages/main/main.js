@@ -14,20 +14,11 @@ import './main.css'
 // import { Dropdown } from 'react-bootstrap';
 import Draggable from 'react-draggable';
 // import { MediaPlayer } from 'win95-media-player';
-import Minesweeper from 'minesweeper'
+import Minesweeper from 'react-minesweeper'
+import "react-minesweeper/lib/minesweeper.css";
 
 
 function Main() {
-    
-    var minesweeper = require('minesweeper')
-    var mineArray = minesweeper.generateMineArray({
-        rows: 10,
-        cols: 10,
-        mines: 15
-    });
-    var board = new minesweeper.Board(mineArray);
-    var grid = board.grid();
-
 
     const [showStart, setShowStart] = useState(false)
     const [showProgram, setShowProgram] = useState(false)
@@ -82,6 +73,10 @@ function Main() {
         }
     }
 
+    const closeMine = () => {
+        setShowMinesweeper(false)
+    }
+
     const closePaint = () => {
         setShowPaint(false)
     }
@@ -127,9 +122,6 @@ function Main() {
         // }
     }
 
-    //using minesweeper npm package
-    var board = new minesweeper.Board(mineArray);
-    var grid = board.grid();
         return (
             <div>
                 <div className="background">
@@ -208,7 +200,28 @@ function Main() {
                             </div>
                         </div>
                 : null}
-                { showMinesweeper ? <div><Minesweeper /></div> : null }
+                { showMinesweeper ? <div>
+                    <Draggable>
+                    <div className="container">
+                        <div className="row mineHeader">
+                        <div className="mineIcon"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAD1BMVEUAAAAAAACGio7Dx8v///8tKIExAAAAAXRSTlMAQObYZgAAAPFJREFUSEvV1MuNhTAQRNFOoVKoFCqFyj+mWfhD48ej7ZnVmAUS98jGRiLiNkTG66iALOLfAqnfLKoJ3GAFZKtlSxQQAee1KiDJVuuWKAImr0VKQEq2e5coEsQB6CJ3IvcaBFtX7yJ46xtg6SR4BKh717LLDTA2SKYljsDoNjF7PupXQNJuE1si0DqBbipA22NzDSB1YAPk0+nfeXSSGwDzdDSnvRbABog2VRtPvQYRU4x3u9U90M9mXEuvwSp+B157DbpYxgn4jIuoAPKXfhI1eOo8AQEAkWsEkP8gJej//ivPR9sgSX4p24B/BYGif4IfeRuXi0P8C3oAAAAASUVORK5CYII="/><span>Minesweeper</span></div>
+                        <div onClick={closeMine} className="closeMine">&#10006;</div>
+                        </div>
+                    
+                        <div className="row">
+                        <div className="mineContainer">
+                            <Minesweeper
+                            onWin={() => console.log("GAME WON")}
+                            onLose={() => console.log("GAME LOST")}
+                            bombChance={0.15} // 15% chance that a field will contain a bomb
+                            // width={100%} // amount of fields horizontally
+                            // height={10} // amount of fields vertically
+                            />
+                        </div>
+                        </div>
+                    </div>
+                    </Draggable>
+                </div> : null }
                 { showStart ? 
                     <div className="startBox">
                         <div className="row windows95Row">
