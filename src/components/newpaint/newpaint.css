@@ -1,0 +1,105 @@
+.paintContainer {
+  width: 1000px;
+  height: 150px;
+  margin-top:-675px;
+  background-color: #dfdfdf;
+}
+
+.marginButton {
+  margin-left: 5px;
+}
+
+.paintContainer button {
+  margin-top: 3px;
+  margin-right: 5px;
+  margin-bottom: 1px;
+}
+
+.paintContainer label {
+  margin-right: 5px;
+  margin-left: 25px;
+}
+
+.paintContainer input {
+  width: 40px;
+  margin-right: 5px;
+}
+
+.paintIcon img {
+  margin-left: 3px;
+  margin-bottom: 3px;
+  width: 20px;
+}
+
+.paintIcon span {
+  margin-left: 10px;
+  color: white;
+}
+
+.closePaint {
+  margin-left: 90.9%;
+  cursor: pointer;
+}
+
+.colorBox {
+  margin-top: 3px;
+  margin-right: 5px;
+  margin-bottom: -6px;
+  display:inline-block;
+  width: 20px;
+  height: 20px;
+  border-style: ridge;
+  border-color: lightgray;
+}
+
+.colorBox:hover {
+  border-color: lightslategray;
+}
+
+.colorBox.black:active {
+  border-color: yellow;
+}
+
+.colorBox:active {
+  border-color: black;
+}
+
+.red {
+  background: red;
+}
+
+.orange {
+  background: orange;
+}
+
+.yellow {
+  background: yellow;
+}
+
+.green {
+  background: green;
+}
+
+.blue {
+  background: blue;
+}
+
+.indigo {
+  background: indigo;
+}
+
+.violet {
+  background: violet;
+}
+
+.black {
+  background: black;
+}
+
+.brown {
+  background: brown;
+}
+
+.white {
+  background: white;
+}

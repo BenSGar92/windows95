@@ -8,6 +8,7 @@ import DragIcon5 from '../../components/icon/drag5'
 import MediaPlayerIcon from '../../components/icon/mediaplayer'
 import Explorer from '../../components/icon/explorer'
 import Paint from '../../components/paint/paint'
+import NewPaint from '../../components/newpaint/newpaint'
 // import Browser from '../../components/browser/browser'
 import Calc from '../../components/calculator/calculator'
 import './main.css'
@@ -173,31 +174,32 @@ function Main() {
                                 <div className="paintIcon"><img src="https://daks2k3a4ib2z.cloudfront.net/57b0b52271bead8852aa6781/57e000d1b08345807bdc15b6_pbrush_1.ico_32x32.png"/><span>Paint</span></div>
                                 <div onClick={closePaint} className="closePaint">&#10006;</div>
                             </div>
-                            <div className="row">
+                            <NewPaint />
+                        {/* //     <div className="row"> */}
                                 
-                                <div className="paintContainer">
-                                    <div className="dropdownDiv">
-                                    {/* <Dropdown>
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        Color
-                                    </Dropdown.Toggle>
+                        {/* //         <div className="paintContainer">
+                        //             <div className="dropdownDiv"> */}
+                                       {/* <Dropdown>
+                        //             <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                        //                 Color
+                        //             </Dropdown.Toggle>
 
-                                    <Dropdown.Menu className="dropdownMenu">
-                                        <Dropdown.Item href="#/action-1">Red</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-2">Orange</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Yellow</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Green</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Blue</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Purple</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Black</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Brown</Dropdown.Item>
-                                        <Dropdown.Item href="#/action-3">Erase</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                    </Dropdown> */}
-                                    </div>
-                                    <Paint />
-                                </div>
-                            </div>
+                        //             <Dropdown.Menu className="dropdownMenu">
+                        //                 <Dropdown.Item href="#/action-1">Red</Dropdown.Item>
+                        //                 <Dropdown.Item href="#/action-2">Orange</Dropdown.Item>
+                        //                 <Dropdown.Item href="#/action-3">Yellow</Dropdown.Item>
+                        //                 <Dropdown.Item href="#/action-3">Green</Dropdown.Item>
+                        //                 <Dropdown.Item href="#/action-3">Blue</Dropdown.Item>
+                        //                 <Dropdown.Item href="#/action-3">Purple</Dropdown.Item>
+                        //                 <Dropdown.Item href="#/action-3">Black</Dropdown.Item>
+                        //                 <Dropdown.Item href="#/action-3">Brown</Dropdown.Item>
+                        //                 <Dropdown.Item href="#/action-3">Erase</Dropdown.Item>
+                        //             </Dropdown.Menu>
+                        //             </Dropdown> */}
+                        {/* //             </div> */}
+                        {/* //             <Paint /> */}
+                        {/* //         </div> */}
+                            {/* </div> */}
                         </div>
                 : null}
                 { showMinesweeper ? <div>
